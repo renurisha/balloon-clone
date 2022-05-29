@@ -45,6 +45,7 @@ export const reducers = (state = init, { type, payload }) => {
         const removeselected = state.selectedCircles.filter(
           (e) => e.id != payload.id
         );
+        var flag = false;
         var low = 0;
         var high = sorteddata.length - 1;
         while (high >= low) {
@@ -53,12 +54,21 @@ export const reducers = (state = init, { type, payload }) => {
             high--;
           } else {
             sorteddata[high + 1] = payload;
+            flag = true;
             return {
               ...state,
               totalCircles: [...sorteddata],
               selectedCircles: [...removeselected],
             };
           }
+        }
+        if (flag === false) {
+          sorteddata[low] = payload;
+          return {
+            ...state,
+            totalCircles: [...sorteddata],
+            selectedCircles: [...removeselected],
+          };
         }
       }
       break;

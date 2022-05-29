@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     while (i < totalNumberOfGivenCircles) {
       var findcolor = randomColorGenerate();
-      console.log("find", findcolor);
+      //console.log("find", findcolor);
       var obj = {
         id: i + 1,
         addcolor: `${findcolor}`,
@@ -57,7 +57,7 @@ function App() {
     setId("");
   };
   const reStoreCircle = (e) => {
-    console.log("restore", e.id);
+    //console.log("restore", e.id);
     dispatch({ type: RESTORE_CIRCLES, payload: e });
   };
 
